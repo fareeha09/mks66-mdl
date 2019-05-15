@@ -65,7 +65,7 @@ def run(filename):
             #if constant variable is present, use those for lighting
             if command['constants'] is not None:
                 draw_polygons(tmp, screen, zbuffer, view, ambient,
-                                  light, symbols, reflect)
+                                  light, symbols, command['constants'])
             else:
                 draw_polygons(tmp, screen, zbuffer, view, ambient,
                                   light, symbols, reflect)
@@ -82,7 +82,7 @@ def run(filename):
             #if constant variable is present, use those for lighting
             if command['constants'] is not None:
                 draw_polygons(tmp, screen, zbuffer, view, ambient,
-                                  light, symbols, reflect)
+                                  light, symbols, command['constants'])
             else:
                 draw_polygons(tmp, screen, zbuffer, view, ambient,
                                   light, symbols, reflect)
@@ -99,7 +99,7 @@ def run(filename):
             #if constant variable is present, use those for lighting
             if command['constants'] is not None:
                 draw_polygons(tmp, screen, zbuffer, view, ambient,
-                                  light, symbols, reflect)
+                                  light, symbols, command['constants'])
             else:
                 draw_polygons(tmp, screen, zbuffer, view, ambient,
                                   light, symbols, reflect)
