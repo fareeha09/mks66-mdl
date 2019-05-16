@@ -48,7 +48,6 @@ def run(filename):
 
     print symbols
     for command in commands:
-        print command
         if command['op'] == 'push':
             stack.append( [x[:] for x in stack[-1]] )
             
@@ -148,6 +147,6 @@ def run(filename):
             display(screen)
             
         elif command['op'] == 'save':
-            save_extension(screen, command['args'][0])
+            save_extension(screen, command['args'][0]+'.png')
         
             
