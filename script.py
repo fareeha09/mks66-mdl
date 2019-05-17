@@ -47,6 +47,7 @@ def run(filename):
     reflect = '.white'
 
     #print symbols
+    print "image in the making..."
     for command in commands:
         #print command
         if command['op'] == 'push':
