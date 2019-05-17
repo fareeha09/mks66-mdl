@@ -46,8 +46,9 @@ def run(filename):
                           'blue': [0.2, 0.5, 0.5]}]
     reflect = '.white'
 
-    print symbols
+    #print symbols
     for command in commands:
+        #print command
         if command['op'] == 'push':
             stack.append( [x[:] for x in stack[-1]] )
             
@@ -55,55 +56,62 @@ def run(filename):
             stack.pop()
         
         elif command['op'] == 'sphere':
-            add_sphere(tmp, float(command['args'][0]),
-                           float(command['args'][1]),
-                           float(command['args'][2]),
-                           float(command['args'][3]),
-                           step_3d)
-            matrix_mult(stack[-1], tmp)
-            #if constant variable is present, use those for lighting
-            if command['constants'] is not None:
-                draw_polygons(tmp, screen, zbuffer, view, ambient,
-                                  light, symbols, command['constants'])
-            else:
-                draw_polygons(tmp, screen, zbuffer, view, ambient,
-                                  light, symbols, reflect)
-            tmp = []
-            
+		    try:
+				add_sphere(tmp, float(command['args'][0]),
+							   float(command['args'][1]),
+							   float(command['args'][2]),
+							   float(command['args'][3]),
+							   step_3d)
+				matrix_mult(stack[-1], tmp)
+				#if constant variable is present, use those for lighting
+				if command['constants'] is not None:
+					draw_polygons(tmp, screen, zbuffer, view, ambient,
+									  light, symbols, command['constants'])
+				else:
+					draw_polygons(tmp, screen, zbuffer, view, ambient,
+									  light, symbols, reflect)
+				tmp = []
+				
+		    except:
+				continue
         elif command['op'] == 'box':
-            add_box(tmp, float(command['args'][0]),
-                        float(command['args'][1]),
-                        float(command['args'][2]),
-                        float(command['args'][3]),
-                        float(command['args'][4]),
-                        float(command['args'][5]))
-            matrix_mult(stack[-1], tmp)
-            #if constant variable is present, use those for lighting
-            if command['constants'] is not None:
-                draw_polygons(tmp, screen, zbuffer, view, ambient,
-                                  light, symbols, command['constants'])
-            else:
-                draw_polygons(tmp, screen, zbuffer, view, ambient,
-                                  light, symbols, reflect)
-            tmp = []
-            
+		    try:
+				add_box(tmp, float(command['args'][0]),
+							float(command['args'][1]),
+							float(command['args'][2]),
+							float(command['args'][3]),
+							float(command['args'][4]),
+							float(command['args'][5]))
+				matrix_mult(stack[-1], tmp)
+				#if constant variable is present, use those for lighting
+				if command['constants'] is not None:
+					draw_polygons(tmp, screen, zbuffer, view, ambient,
+									  light, symbols, command['constants'])
+				else:
+					draw_polygons(tmp, screen, zbuffer, view, ambient,
+									  light, symbols, reflect)
+				tmp = []
+		    except:
+				continue 			
         elif command['op'] == 'torus':
-            add_torus(tmp, float(command['args'][0]),
-                          float(command['args'][1]),
-                          float(command['args'][2]),
-                          float(command['args'][3]),
-                          float(command['args'][4]),
-                          step_3d)
-            matrix_mult(stack[-1], tmp)
-            #if constant variable is present, use those for lighting
-            if command['constants'] is not None:
-                draw_polygons(tmp, screen, zbuffer, view, ambient,
-                                  light, symbols, command['constants'])
-            else:
-                draw_polygons(tmp, screen, zbuffer, view, ambient,
-                                  light, symbols, reflect)
-            tmp = []
-
+		    try:
+				add_torus(tmp, float(command['args'][0]),
+							  float(command['args'][1]),
+							  float(command['args'][2]),
+							  float(command['args'][3]),
+							  float(command['args'][4]),
+							  step_3d)
+				matrix_mult(stack[-1], tmp)
+				#if constant variable is present, use those for lighting
+				if command['constants'] is not None:
+					draw_polygons(tmp, screen, zbuffer, view, ambient,
+									  light, symbols, command['constants'])
+				else:
+					draw_polygons(tmp, screen, zbuffer, view, ambient,
+									  light, symbols, reflect)
+				tmp = []
+		    except:
+				continue
         elif command['op'] == 'line':
             add_edge( tmp, float(command['args'][0]),
                           float(command['args'][1]),
